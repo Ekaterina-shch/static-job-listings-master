@@ -1,0 +1,1 @@
+# Static job listings master
