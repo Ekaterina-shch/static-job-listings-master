@@ -1,0 +1,80 @@
+@import './../../sass/variables.scss';
+@import './../../sass/mixins.scss';
+
+.post {
+  background-color: $white;
+  box-shadow: 0px 15px 40px -4px $primary-shodow;
+  margin-bottom: 40px;
+  padding: 20px 40px;
+  &Wrapper {
+    display: flex;
+    gap: 25px;
+  }
+}
+
+.logo {
+  border-radius: 50%;
+  width: 88px;
+  height: 88px;
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.company {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: $primary;
+  margin-right: 7px;
+}
+
+.position {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.bodyBottom {
+  display: flex;
+  gap: 25px;
+  .postedAt {
+    color: $dark-grayish;
+  }
+  .contract {
+    color: $dark-grayish;
+    position: relative;
+    &:before {
+      @include marker;
+    }
+  }
+  .location {
+    color: $dark-grayish;
+    position: relative;
+    &:before {
+      @include marker;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50%;
+  justify-content: flex-end;
+  gap: 15px;
+}

@@ -1,10 +1,12 @@
-import './App.css';
-import PostList from './components/PostList';
+import Filter from './components/Filter/Filter';
+import PostList from './components/PostList/PostList';
+import './App.scss';
 
 function App() {
   return (
     <>
-      <h1>Static job listings master</h1>
+      <h1 style={{ display: 'none' }}>Static job listings master</h1>
+      <Filter />
       <PostList />
     </>
   );

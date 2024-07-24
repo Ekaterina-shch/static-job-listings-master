@@ -1,0 +1,15 @@
+@import './../../sass/variables';
+
+.tag {
+  background-color: $light-grayish-bg;
+  color: $primary;
+  font-weight: 700;
+  padding: 7px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: $primary;
+    color: $white;
+    cursor: pointer;
+  }
+}

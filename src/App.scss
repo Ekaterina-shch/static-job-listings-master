@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/LeagueSpartan-Medium.ttf');
+}
+@font-face {
+  font-family: 'League Spartan';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/LeagueSpartan-Bold.ttf');
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+}
