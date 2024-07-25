@@ -1,16 +1,26 @@
-import Tag from '../Tag/Tag';
 import styles from './Filter.module.scss';
 
-const Filter = () => {
+const Filter = ({ stack, setStack, clearFilter }) => {
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterTagsList}>
-        <div className={styles.filterTagItem}>
-          <Tag text="CSS" />
-          <button className={styles.btnFilterRemove}></button>
-        </div>
+        {stack.map((tag) => {
+          return (
+            <div className={styles.filterTagItem} key={tag}>
+              <div className={styles.text}>{tag}</div>
+              <button
+                className={styles.btnFilterRemove}
+                onClick={() => {
+                  setStack(stack.filter((a) => a !== tag));
+                }}
+              ></button>
+            </div>
+          );
+        })}
       </div>
-      <button className={styles.btnClear}>Clear</button>
+      <button className={styles.btnClear} onClick={clearFilter}>
+        Clear
+      </button>
     </div>
   );
 };

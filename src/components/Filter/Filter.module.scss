@@ -11,11 +11,22 @@
 }
 
 .filterTagsList {
-  max-width: 70%;
+  max-width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 .filterTagItem {
   display: flex;
+  background-color: $light-grayish-bg;
+  color: $primary;
+  font-weight: 700;
+  border-radius: 5px;
+  .text {
+    padding: 7px;
+  }
 }
+
 .btnFilterRemove {
   display: block;
   width: 28px;

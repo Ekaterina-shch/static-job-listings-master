@@ -16,6 +16,7 @@ const Post = ({
   location,
   languages,
   tools,
+  addTag,
 }) => {
   const tagArray = [role, level, ...languages, ...tools];
 
@@ -41,7 +42,7 @@ const Post = ({
           </div>
           <div className={styles.categories}>
             {tagArray.map((text) => {
-              return <Tag text={text} key={text} />;
+              return <Tag text={text} key={text} addTag={addTag} />;
             })}
           </div>
         </div>
