@@ -1,6 +1,6 @@
 import styles from './Filter.module.scss';
 
-const Filter = ({ stack, setStack, clearFilter }) => {
+const Filter = ({ stack, setStack }) => {
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterTagsList}>
@@ -18,7 +18,7 @@ const Filter = ({ stack, setStack, clearFilter }) => {
           );
         })}
       </div>
-      <button className={styles.btnClear} onClick={clearFilter}>
+      <button className={styles.btnClear} onClick={() => setStack([])}>
         Clear
       </button>
     </div>

@@ -10,8 +10,6 @@ function App() {
   // стек - сюда мы кладем все теги, на которые кликаем.
   //        выводим как список в плашке с фильтрами
   const [stack, setStack] = useState([]);
-
-  // флаг - отвечает за показ/скрытие панельки с фильтрами
   const [isShowFilter, setIsShowFilter] = useState(true);
 
   // отслеживаем пустой ли стек, если да - скрываем фильтр
@@ -20,6 +18,7 @@ function App() {
       setIsShowFilter(false);
     } else {
       setIsShowFilter(true);
+      // filterItems();
     }
   }, [stack]);
 
@@ -33,23 +32,38 @@ function App() {
     }
   };
 
-  //полностью очистить стек и скрыть плашку с фильтром
-  const clearFilter = () => {
-    setStack([]);
-    console.log('clear filter');
-  };
+  // const filterItems = () => {
+  //   if (stack.length > 0) {
+  //     let tempItems = stack.map((stackItem) => {
+  //       console.log('stackItem', stackItem);
+  //       let tempRole = data.filter((item) => item.role === stackItem);
+  //       let tempLevel = data.filter((item) => item.level === stackItem);
+  //       let tempLanguages = data.filter((item) =>
+  //         item.languages.includes(stackItem)
+  //       );
+  //       let tempTools = data.filter((item) => item.tools.includes(stackItem));
 
-  // на основе стека вывести ваканасии, в которых есть наши теги
+  //       return tempTools;
+  //     });
 
-  const finedTag = () => {};
+  //     setData(tempItems.flat());
+  //   } else {
+  //     setData([...dataJs]);
+  //   }
+  // };
 
   return (
     <>
-      <h1 style={{ display: 'none' }}>Static job listings master</h1>
-      {isShowFilter && (
-        <Filter stack={stack} setStack={setStack} clearFilter={clearFilter} />
-      )}
-      <PostList data={data} addTag={addTag} finedTag={finedTag} />
+      <header className="header">
+        <h1 style={{ display: 'none' }}>Static job listings master</h1>
+        <img src="/public/images/bg-header-desktop.svg" alt="" />
+      </header>
+      <div className="body">
+        <div className="container">
+          {isShowFilter && <Filter stack={stack} setStack={setStack} />}
+          <PostList data={data} addTag={addTag} />
+        </div>
+      </div>
     </>
   );
 }
