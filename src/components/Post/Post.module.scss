@@ -1,0 +1,122 @@
+@import './../../sass/variables.scss';
+@import './../../sass/mixins.scss';
+
+.post {
+  position: relative;
+  background-color: $white;
+  box-shadow: 0px 15px 40px -4px $primary-shodow;
+  border-left: 5px solid transparent;
+  border-radius: 5px;
+  padding: 20px 40px;
+  &Wrapper {
+    display: flex;
+    gap: 25px;
+  }
+  &Featured {
+    border-left: 5px solid $primary;
+    order: -1;
+  }
+}
+
+.logo {
+  border-radius: 50%;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.company {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: $primary;
+  margin-right: 7px;
+}
+
+.position {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.bodyBottom {
+  display: flex;
+  gap: 25px;
+  .postedAt {
+    color: $dark-grayish;
+  }
+  .contract {
+    color: $dark-grayish;
+    position: relative;
+    &:before {
+      @include marker;
+    }
+  }
+  .location {
+    color: $dark-grayish;
+    position: relative;
+    &:before {
+      @include marker;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 50%;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .post {
+    padding: 50px 25px 20px;
+    &Wrapper {
+      flex-direction: column;
+    }
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: -25px;
+  }
+  .body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info {
+    width: 100%;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #dddddd;
+    gap: 20px;
+  }
+  .categories {
+    justify-content: flex-start;
+    max-width: none;
+    width: 100%;
+  }
+}

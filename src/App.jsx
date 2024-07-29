@@ -1,35 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react';
+import Filter from './components/Filter/Filter';
+import PostList from './components/PostList/PostList';
+import dataJs from './data/data';
+
+import './App.scss';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setData] = useState(dataJs);
+  const [stackSelectedCategory, setStackSelectedCategory] = useState([]);
+  const [isShowFilter, setIsShowFilter] = useState(true);
+
+  const mergeCategories = (item) => {
+    return [item.role, item.level, ...item.languages, ...item.tools];
+  };
+
+  const filterData = dataJs.filter((item) => {
+    return stackSelectedCategory.every((tag) => {
+      return mergeCategories(item).includes(tag);
+    });
+  });
+
+  useEffect(() => {
+    // отслеживаем пустой ли стек, если да - скрываем фильтр
+    if (stackSelectedCategory.length === 0) {
+      setIsShowFilter(false);
+      setData(dataJs);
+    } else {
+      setIsShowFilter(true);
+      setData(filterData);
+    }
+  }, [stackSelectedCategory]);
+
+  const addTag = (tag) => {
+    if (stackSelectedCategory.includes(tag)) {
+      return stackSelectedCategory;
+    } else {
+      setStackSelectedCategory([...stackSelectedCategory, tag]);
+    }
+  };
+
+  const clearFilter = () => {
+    setStackSelectedCategory([]);
+    setData(dataJs);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <header className="header">
+        <h1 style={{ display: 'none' }}>Static job listings master</h1>
+        <img src="/images/bg-header-desktop.svg" alt="" />
+      </header>
+      <div className="bodyApp">
+        <div className="container">
+          {isShowFilter && (
+            <Filter
+              stackSelectedCategory={stackSelectedCategory}
+              setStackSelectedCategory={setStackSelectedCategory}
+              clearFilter={clearFilter}
+            />
+          )}
+          <PostList data={filterData} addTag={addTag} />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

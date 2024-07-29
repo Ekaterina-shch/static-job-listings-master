@@ -1,0 +1,7 @@
+@import './../../../sass/variables.scss';
+@import './../../../sass/mixins.scss';
+
+.featured {
+  @include label;
+  background-color: $very-dark-grayish;
+}
