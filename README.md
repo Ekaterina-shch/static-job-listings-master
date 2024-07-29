@@ -7,4 +7,4 @@ The categories are:
 - Languages: Python, Ruby, JavaScript, HTML, CSS
 - Tools: React, Sass, Vue, Django, RoR (Ruby on Rails)
 
-So, if a job listing is for has the following categories `Frontend, Junior, JavaScript, React` your HTML data attributes would look like this `data-role="frontend" data-level="junior" data-languages="javascript" data-tools="react"`.
+- Элементы, у которых есть пометка "featured" стоят первые в списке + у них появляется синяя полоса слева.

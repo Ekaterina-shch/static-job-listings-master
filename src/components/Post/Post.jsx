@@ -21,7 +21,11 @@ const Post = ({
   const tagArray = [role, level, ...languages, ...tools];
 
   return (
-    <div className={styles.post}>
+    <div
+      className={
+        featured ? styles.post + ' ' + styles.postFeatured : styles.post
+      }
+    >
       <div className={styles.postWrapper}>
         <div className={styles.logo}>
           <img src={logo} alt={company} />

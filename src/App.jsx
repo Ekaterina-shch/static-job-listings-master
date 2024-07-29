@@ -5,20 +5,22 @@ import dataJs from './data/data';
 
 import './App.scss';
 
+/*
+  Дополнительно:
+    - подсветить теги, которые попали под фильтер (сделать их активными)
+    - сделать на всю высоту. Сейчас наш блок ограничен контентом. Нам надо, чтобы при фильтрации фон не пропадал. Чтобы "условный футер" был внизу страницы
+*/
+
 function App() {
   const [data, setData] = useState(dataJs);
-
-  // стек - сюда мы кладем все теги, на которые кликаем.
-  //        выводим как список в плашке с фильтрами
   const [stackSelectedCategory, setStackSelectedCategory] = useState([]);
-
   const [isShowFilter, setIsShowFilter] = useState(true);
 
-  function mergeCategories(item) {
+  const mergeCategories = (item) => {
     return [item.role, item.level, ...item.languages, ...item.tools];
-  }
+  };
 
-  const filterData = data.filter((item) => {
+  const filterData = dataJs.filter((item) => {
     return stackSelectedCategory.every((tag) => {
       return mergeCategories(item).includes(tag);
     });
