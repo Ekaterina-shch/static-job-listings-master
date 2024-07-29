@@ -24,6 +24,11 @@ body {
   font-size: 15px;
 }
 
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 .header {
   background-color: $primary;
   height: 150px;
@@ -34,8 +39,11 @@ body {
   }
 }
 
-.body {
+.bodyApp {
   background-color: $light-grayish-bg;
+  height: 100%;
+  flex-grow: 1;
+  padding-bottom: 40px;
   .container {
     width: 100%;
     max-width: 1400px;

@@ -8,7 +8,6 @@ import './App.scss';
 /*
   Дополнительно:
     - подсветить теги, которые попали под фильтер (сделать их активными)
-    - сделать на всю высоту. Сейчас наш блок ограничен контентом. Нам надо, чтобы при фильтрации фон не пропадал. Чтобы "условный футер" был внизу страницы
 */
 
 function App() {
@@ -57,7 +56,7 @@ function App() {
         <h1 style={{ display: 'none' }}>Static job listings master</h1>
         <img src="/images/bg-header-desktop.svg" alt="" />
       </header>
-      <div className="body">
+      <div className="bodyApp">
         <div className="container">
           {isShowFilter && (
             <Filter
