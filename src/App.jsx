@@ -5,11 +5,6 @@ import dataJs from './data/data';
 
 import './App.scss';
 
-/*
-  Дополнительно:
-    - подсветить теги, которые попали под фильтер (сделать их активными)
-*/
-
 function App() {
   const [data, setData] = useState(dataJs);
   const [stackSelectedCategory, setStackSelectedCategory] = useState([]);
@@ -25,8 +20,8 @@ function App() {
     });
   });
 
-  // отслеживаем пустой ли стек, если да - скрываем фильтр
   useEffect(() => {
+    // отслеживаем пустой ли стек, если да - скрываем фильтр
     if (stackSelectedCategory.length === 0) {
       setIsShowFilter(false);
       setData(dataJs);
@@ -36,7 +31,6 @@ function App() {
     }
   }, [stackSelectedCategory]);
 
-  // функция, которая будет добавлять тег в стек
   const addTag = (tag) => {
     if (stackSelectedCategory.includes(tag)) {
       return stackSelectedCategory;
