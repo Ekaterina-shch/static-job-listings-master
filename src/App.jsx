@@ -48,7 +48,7 @@ function App() {
     <>
       <header className="header">
         <h1 style={{ display: 'none' }}>Static job listings master</h1>
-        <img src="/public/images/bg-header-desktop.svg" alt="" />
+        <img src="/images/bg-header-desktop.svg" alt="" />
       </header>
       <div className="bodyApp">
         <div className="container">
