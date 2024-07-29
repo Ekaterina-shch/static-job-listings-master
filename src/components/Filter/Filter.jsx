@@ -1,24 +1,30 @@
 import styles from './Filter.module.scss';
 
-const Filter = ({ stack, setStack }) => {
+const Filter = ({
+  stackSelectedCategory,
+  setStackSelectedCategory,
+  clearFilter,
+}) => {
   return (
     <div className={styles.filterContainer}>
       <div className={styles.filterTagsList}>
-        {stack.map((tag) => {
+        {stackSelectedCategory.map((tag) => {
           return (
             <div className={styles.filterTagItem} key={tag}>
               <div className={styles.text}>{tag}</div>
               <button
                 className={styles.btnFilterRemove}
                 onClick={() => {
-                  setStack(stack.filter((a) => a !== tag));
+                  setStackSelectedCategory(
+                    stackSelectedCategory.filter((a) => a !== tag)
+                  );
                 }}
               ></button>
             </div>
           );
         })}
       </div>
-      <button className={styles.btnClear} onClick={() => setStack([])}>
+      <button className={styles.btnClear} onClick={clearFilter}>
         Clear
       </button>
     </div>

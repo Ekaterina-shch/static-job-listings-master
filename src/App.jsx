@@ -7,61 +7,64 @@ import './App.scss';
 
 function App() {
   const [data, setData] = useState(dataJs);
+
   // стек - сюда мы кладем все теги, на которые кликаем.
   //        выводим как список в плашке с фильтрами
-  const [stack, setStack] = useState([]);
+  const [stackSelectedCategory, setStackSelectedCategory] = useState([]);
+
   const [isShowFilter, setIsShowFilter] = useState(true);
+
+  function mergeCategories(item) {
+    return [item.role, item.level, ...item.languages, ...item.tools];
+  }
+
+  const filterData = data.filter((item) => {
+    return stackSelectedCategory.every((tag) => {
+      return mergeCategories(item).includes(tag);
+    });
+  });
 
   // отслеживаем пустой ли стек, если да - скрываем фильтр
   useEffect(() => {
-    if (stack.length === 0) {
+    if (stackSelectedCategory.length === 0) {
       setIsShowFilter(false);
+      setData(dataJs);
     } else {
       setIsShowFilter(true);
-      // filterItems();
+      setData(filterData);
     }
-  }, [stack]);
+  }, [stackSelectedCategory]);
 
   // функция, которая будет добавлять тег в стек
   const addTag = (tag) => {
-    //проверка на то, есть ли такой тег в стеке
-    if (stack.includes(tag)) {
-      return stack;
+    if (stackSelectedCategory.includes(tag)) {
+      return stackSelectedCategory;
     } else {
-      setStack([...stack, tag]);
+      setStackSelectedCategory([...stackSelectedCategory, tag]);
     }
   };
 
-  // const filterItems = () => {
-  //   if (stack.length > 0) {
-  //     let tempItems = stack.map((stackItem) => {
-  //       console.log('stackItem', stackItem);
-  //       let tempRole = data.filter((item) => item.role === stackItem);
-  //       let tempLevel = data.filter((item) => item.level === stackItem);
-  //       let tempLanguages = data.filter((item) =>
-  //         item.languages.includes(stackItem)
-  //       );
-  //       let tempTools = data.filter((item) => item.tools.includes(stackItem));
-
-  //       return tempTools;
-  //     });
-
-  //     setData(tempItems.flat());
-  //   } else {
-  //     setData([...dataJs]);
-  //   }
-  // };
+  const clearFilter = () => {
+    setStackSelectedCategory([]);
+    setData(dataJs);
+  };
 
   return (
     <>
       <header className="header">
         <h1 style={{ display: 'none' }}>Static job listings master</h1>
-        <img src="/public/images/bg-header-desktop.svg" alt="" />
+        <img src="/images/bg-header-desktop.svg" alt="" />
       </header>
       <div className="body">
         <div className="container">
-          {isShowFilter && <Filter stack={stack} setStack={setStack} />}
-          <PostList data={data} addTag={addTag} />
+          {isShowFilter && (
+            <Filter
+              stackSelectedCategory={stackSelectedCategory}
+              setStackSelectedCategory={setStackSelectedCategory}
+              clearFilter={clearFilter}
+            />
+          )}
+          <PostList data={filterData} addTag={addTag} />
         </div>
       </div>
     </>
