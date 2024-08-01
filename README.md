@@ -1,6 +1,6 @@
 # Static job listings master
 
-**Цель:** реализовать проект с использованием React + SASS
+**Цель:** реализовать проект с фильтрацией списков, используя React + SASS.
 
 **Результат:** [GitHub Pages](https://ekaterina-shch.github.io/static-job-listings-master/)
 
